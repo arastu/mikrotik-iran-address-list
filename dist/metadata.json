@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-03T03:24:27.939821011Z",
+  "generated_at": "2026-05-10T03:24:21.871524847Z",
   "list_name": "iran-ips",
   "source_count": 6,
-  "prefix_count": 2654,
-  "ipv4_count": 1935,
+  "prefix_count": 2650,
+  "ipv4_count": 1931,
   "ipv6_count": 719,
   "sources": [
     {
@@ -14,27 +14,27 @@
     {
       "name": "IPDeny aggregated IR",
       "url": "https://www.ipdeny.com/ipblocks/data/aggregated/ir-aggregated.zone",
-      "prefix_count": 1713
+      "prefix_count": 1716
     },
     {
       "name": "IPDeny country IR",
       "url": "https://www.ipdeny.com/ipblocks/data/countries/ir.zone",
-      "prefix_count": 1920
+      "prefix_count": 1923
     },
     {
       "name": "IPToASN v4 IR",
       "url": "https://iptoasn.com/data/ip2country-v4.tsv.gz",
-      "prefix_count": 4921
+      "prefix_count": 4910
     },
     {
       "name": "IPToASN v6 IR",
       "url": "https://iptoasn.com/data/ip2country-v6.tsv.gz",
-      "prefix_count": 387
+      "prefix_count": 386
     },
     {
       "name": "Loyalsoldier geoip.dat",
       "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat",
-      "prefix_count": 2718
+      "prefix_count": 2715
     }
   ]
 }
