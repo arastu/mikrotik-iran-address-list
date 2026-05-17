@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-10T03:24:21.871524847Z",
+  "generated_at": "2026-05-17T03:24:33.229365728Z",
   "list_name": "iran-ips",
   "source_count": 6,
-  "prefix_count": 2650,
-  "ipv4_count": 1931,
-  "ipv6_count": 719,
+  "prefix_count": 2658,
+  "ipv4_count": 1938,
+  "ipv6_count": 720,
   "sources": [
     {
       "name": "Chocolate4U geoip.dat",
@@ -24,17 +24,17 @@
     {
       "name": "IPToASN v4 IR",
       "url": "https://iptoasn.com/data/ip2country-v4.tsv.gz",
-      "prefix_count": 4910
+      "prefix_count": 4920
     },
     {
       "name": "IPToASN v6 IR",
       "url": "https://iptoasn.com/data/ip2country-v6.tsv.gz",
-      "prefix_count": 386
+      "prefix_count": 390
     },
     {
       "name": "Loyalsoldier geoip.dat",
       "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat",
-      "prefix_count": 2715
+      "prefix_count": 2721
     }
   ]
 }
