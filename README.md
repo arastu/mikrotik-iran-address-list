@@ -2,6 +2,8 @@
 
 This repository builds an "ultimate" Iran IP list for MikroTik routers by merging multiple country-IP sources, deduplicating them, re-aggregating them, and exporting import-ready MikroTik scripts.
 
+The generated address-list name is always `iran-ips`.
+
 ## Sources
 
 The generator currently merges these sources:
@@ -18,6 +20,17 @@ The generator currently merges these sources:
    https://iptoasn.com/data/ip2country-v4.tsv.gz
 6. IPToASN IPv6 country ranges
    https://iptoasn.com/data/ip2country-v6.tsv.gz
+7. plitw ros-country-ips IPv4 (built from the RIPE NCC delegated database)
+   https://plitw.github.io/ros-country-ips/routeros_lists/ir_ipv4.rsc
+8. plitw ros-country-ips IPv6 (built from the RIPE NCC delegated database)
+   https://plitw.github.io/ros-country-ips/routeros_lists/ir_ipv6.rsc
+9. MrT3acher MikroTik address-list gist
+   https://gist.github.com/MrT3acher/e963287d408cb17fbb0b2342155acaf7
+10. Ramtiiin iran-ip
+    https://github.com/Ramtiiin/iran-ip
+11. RIPEstat country resource list for IR (the upstream feed behind
+    https://github.com/MrAriaNet/Get-IP-Iran)
+    https://stat.ripe.net/data/country-resource-list/data.json?resource=IR&v4_format=prefix
 
 ## Output
 
@@ -49,3 +62,18 @@ Example:
 ```routeros
 /import file-name=iran-ips-reset-and-import.rsc
 ```
+
+## GitHub Actions
+
+The workflow runs:
+
+- every week
+- on manual dispatch
+
+It regenerates the list, updates `dist/`, and commits changes back to the repository automatically.
+
+## Why This Is Better Than A Single Source
+
+No single feed is complete all the time. Some are more aggressive, some lag behind, some have better IPv4 coverage, some have better IPv6 coverage, and some package their data differently.
+
+This project treats each feed as one input, not the truth. The final list is the union of all successful sources, with duplicates and overlaps removed before export.

@@ -4,8 +4,10 @@ import (
 	"bytes"
 	"compress/gzip"
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/netip"
+	"regexp"
 	"sort"
 	"strings"
 	"sync"
@@ -57,6 +59,31 @@ func Default() List {
 			Name:   "IPToASN v6 IR",
 			URL:    "https://iptoasn.com/data/ip2country-v6.tsv.gz",
 			Parser: parseIPToASNGzip("IR"),
+		},
+		{
+			Name:   "plitw ros-country-ips v4 (RIPE delegated)",
+			URL:    "https://plitw.github.io/ros-country-ips/routeros_lists/ir_ipv4.rsc",
+			Parser: parseRouterOSRsc,
+		},
+		{
+			Name:   "plitw ros-country-ips v6 (RIPE delegated)",
+			URL:    "https://plitw.github.io/ros-country-ips/routeros_lists/ir_ipv6.rsc",
+			Parser: parseRouterOSRsc,
+		},
+		{
+			Name:   "MrT3acher MikroTik address list gist",
+			URL:    "https://gist.githubusercontent.com/MrT3acher/e963287d408cb17fbb0b2342155acaf7/raw/add-iran-address-list.rsc",
+			Parser: parseRouterOSRsc,
+		},
+		{
+			Name:   "Ramtiiin iran-ip",
+			URL:    "https://raw.githubusercontent.com/Ramtiiin/iran-ip/main/ip-list.rsc",
+			Parser: parseRouterOSRsc,
+		},
+		{
+			Name:   "RIPEstat country resource list IR",
+			URL:    "https://stat.ripe.net/data/country-resource-list/data.json?resource=IR&v4_format=prefix",
+			Parser: parseRIPEStat,
 		},
 	}
 }
@@ -164,6 +191,123 @@ func parseCIDRLines(body []byte) ([]netip.Prefix, error) {
 	}
 
 	return prefixes, nil
+}
+
+var routerOSAddressPattern = regexp.MustCompile(`(?:^|\s)address=("?)([0-9A-Fa-f:.\/]+)("?)(?:\s|$)`)
+
+// parseRouterOSRsc extracts address= values from MikroTik RouterOS script
+// lines such as:
+//
+//	add list="ir_ipv4" address=2.57.3.0/24 comment="ir_ipv4"
+//	/ip firewall address-list add address=94.24.16.0/21 list=iran
+//	add address=2.144.0.0/14 list=IRAN
+//
+// Bare addresses without a prefix length are treated as host routes.
+// Private and otherwise non-public entries are skipped because some
+// community-maintained lists mix RFC1918 helpers into their scripts.
+func parseRouterOSRsc(body []byte) ([]netip.Prefix, error) {
+	var prefixes []netip.Prefix
+	for _, line := range strings.Split(string(body), "\n") {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+
+		match := routerOSAddressPattern.FindStringSubmatch(line)
+		if match == nil {
+			continue
+		}
+
+		value := match[2]
+		var prefix netip.Prefix
+		if strings.Contains(value, "/") {
+			parsed, err := netip.ParsePrefix(value)
+			if err != nil {
+				return nil, fmt.Errorf("parse address %q: %w", value, err)
+			}
+			prefix = parsed.Masked()
+		} else {
+			addr, err := netip.ParseAddr(value)
+			if err != nil {
+				return nil, fmt.Errorf("parse address %q: %w", value, err)
+			}
+			prefix = netip.PrefixFrom(addr, addr.BitLen())
+		}
+
+		if !isPublicPrefix(prefix) {
+			continue
+		}
+		prefixes = append(prefixes, prefix)
+	}
+
+	if len(prefixes) == 0 {
+		return nil, fmt.Errorf("no address entries found in RouterOS script")
+	}
+
+	return prefixes, nil
+}
+
+// parseRIPEStat reads the RIPEstat country-resource-list response, the
+// upstream feed behind MrAriaNet/Get-IP-Iran. Entries are CIDR prefixes
+// when v4_format=prefix is requested, but ranges like "a.b.c.d-e.f.g.h"
+// are handled too in case the format parameter is ever dropped.
+func parseRIPEStat(body []byte) ([]netip.Prefix, error) {
+	var response struct {
+		Data struct {
+			Resources struct {
+				IPv4 []string `json:"ipv4"`
+				IPv6 []string `json:"ipv6"`
+			} `json:"resources"`
+		} `json:"data"`
+	}
+	if err := json.Unmarshal(body, &response); err != nil {
+		return nil, fmt.Errorf("unmarshal RIPEstat response: %w", err)
+	}
+
+	entries := append(response.Data.Resources.IPv4, response.Data.Resources.IPv6...)
+	if len(entries) == 0 {
+		return nil, fmt.Errorf("no IR resources found in RIPEstat response")
+	}
+
+	var prefixes []netip.Prefix
+	for _, entry := range entries {
+		entry = strings.TrimSpace(entry)
+		if entry == "" {
+			continue
+		}
+
+		if start, end, ok := strings.Cut(entry, "-"); ok {
+			startAddr, err := netip.ParseAddr(strings.TrimSpace(start))
+			if err != nil {
+				return nil, fmt.Errorf("parse range start %q: %w", entry, err)
+			}
+			endAddr, err := netip.ParseAddr(strings.TrimSpace(end))
+			if err != nil {
+				return nil, fmt.Errorf("parse range end %q: %w", entry, err)
+			}
+			rangePrefixes, err := aggregate.RangeToPrefixes(startAddr, endAddr)
+			if err != nil {
+				return nil, err
+			}
+			prefixes = append(prefixes, rangePrefixes...)
+			continue
+		}
+
+		prefix, err := netip.ParsePrefix(entry)
+		if err != nil {
+			return nil, fmt.Errorf("parse resource %q: %w", entry, err)
+		}
+		prefixes = append(prefixes, prefix.Masked())
+	}
+
+	return prefixes, nil
+}
+
+// isPublicPrefix reports whether the prefix is publicly routable address
+// space: global unicast and not RFC1918 / ULA private space.
+func isPublicPrefix(prefix netip.Prefix) bool {
+	addr := prefix.Addr()
+	return addr.IsGlobalUnicast() && !addr.IsPrivate()
 }
 
 func parseIPToASNGzip(countryCode string) func([]byte) ([]netip.Prefix, error) {
