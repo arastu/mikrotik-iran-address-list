@@ -1,40 +1,40 @@
 {
-  "generated_at": "2026-05-31T03:25:10.848926776Z",
+  "generated_at": "2026-06-07T03:25:13.088732058Z",
   "list_name": "iran-ips",
   "source_count": 6,
-  "prefix_count": 2665,
-  "ipv4_count": 1941,
-  "ipv6_count": 724,
+  "prefix_count": 2643,
+  "ipv4_count": 1928,
+  "ipv6_count": 715,
   "sources": [
     {
       "name": "Chocolate4U geoip.dat",
       "url": "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/geoip.dat",
-      "prefix_count": 2802
+      "prefix_count": 2769
     },
     {
       "name": "IPDeny aggregated IR",
       "url": "https://www.ipdeny.com/ipblocks/data/aggregated/ir-aggregated.zone",
-      "prefix_count": 1717
+      "prefix_count": 1718
     },
     {
       "name": "IPDeny country IR",
       "url": "https://www.ipdeny.com/ipblocks/data/countries/ir.zone",
-      "prefix_count": 1927
+      "prefix_count": 1928
     },
     {
       "name": "IPToASN v4 IR",
       "url": "https://iptoasn.com/data/ip2country-v4.tsv.gz",
-      "prefix_count": 4966
+      "prefix_count": 5049
     },
     {
       "name": "IPToASN v6 IR",
       "url": "https://iptoasn.com/data/ip2country-v6.tsv.gz",
-      "prefix_count": 330
+      "prefix_count": 202
     },
     {
       "name": "Loyalsoldier geoip.dat",
       "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat",
-      "prefix_count": 2725
+      "prefix_count": 2717
     }
   ]
 }
