@@ -1,40 +1,65 @@
 {
-  "generated_at": "2026-08-02T05:35:43.389111668Z",
+  "generated_at": "2026-08-08T18:47:10.630603672Z",
   "list_name": "iran-ips",
-  "source_count": 6,
-  "prefix_count": 2651,
-  "ipv4_count": 1950,
-  "ipv6_count": 701,
+  "source_count": 11,
+  "prefix_count": 2769,
+  "ipv4_count": 2114,
+  "ipv6_count": 655,
   "sources": [
     {
       "name": "Chocolate4U geoip.dat",
       "url": "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/geoip.dat",
-      "prefix_count": 2778
+      "prefix_count": 2879
     },
     {
       "name": "IPDeny aggregated IR",
       "url": "https://www.ipdeny.com/ipblocks/data/aggregated/ir-aggregated.zone",
-      "prefix_count": 1736
+      "prefix_count": 1739
     },
     {
       "name": "IPDeny country IR",
       "url": "https://www.ipdeny.com/ipblocks/data/countries/ir.zone",
-      "prefix_count": 1952
+      "prefix_count": 1957
     },
     {
       "name": "IPToASN v4 IR",
       "url": "https://iptoasn.com/data/ip2country-v4.tsv.gz",
-      "prefix_count": 5164
+      "prefix_count": 5155
     },
     {
       "name": "IPToASN v6 IR",
       "url": "https://iptoasn.com/data/ip2country-v6.tsv.gz",
-      "prefix_count": 265
+      "prefix_count": 263
     },
     {
       "name": "Loyalsoldier geoip.dat",
       "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat",
       "prefix_count": 2752
+    },
+    {
+      "name": "MrT3acher MikroTik address list gist",
+      "url": "https://gist.githubusercontent.com/MrT3acher/e963287d408cb17fbb0b2342155acaf7/raw/add-iran-address-list.rsc",
+      "prefix_count": 1525
+    },
+    {
+      "name": "RIPEstat country resource list IR",
+      "url": "https://stat.ripe.net/data/country-resource-list/data.json?resource=IR\u0026v4_format=prefix",
+      "prefix_count": 2528
+    },
+    {
+      "name": "Ramtiiin iran-ip",
+      "url": "https://raw.githubusercontent.com/Ramtiiin/iran-ip/main/ip-list.rsc",
+      "prefix_count": 1387
+    },
+    {
+      "name": "plitw ros-country-ips v4 (RIPE delegated)",
+      "url": "https://plitw.github.io/ros-country-ips/routeros_lists/ir_ipv4.rsc",
+      "prefix_count": 1954
+    },
+    {
+      "name": "plitw ros-country-ips v6 (RIPE delegated)",
+      "url": "https://plitw.github.io/ros-country-ips/routeros_lists/ir_ipv6.rsc",
+      "prefix_count": 571
     }
   ]
 }
