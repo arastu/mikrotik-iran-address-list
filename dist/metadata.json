@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-08T18:47:10.630603672Z",
+  "generated_at": "2026-08-09T03:51:39.893128536Z",
   "list_name": "iran-ips",
   "source_count": 11,
   "prefix_count": 2769,
@@ -24,12 +24,12 @@
     {
       "name": "IPToASN v4 IR",
       "url": "https://iptoasn.com/data/ip2country-v4.tsv.gz",
-      "prefix_count": 5155
+      "prefix_count": 5185
     },
     {
       "name": "IPToASN v6 IR",
       "url": "https://iptoasn.com/data/ip2country-v6.tsv.gz",
-      "prefix_count": 263
+      "prefix_count": 258
     },
     {
       "name": "Loyalsoldier geoip.dat",
