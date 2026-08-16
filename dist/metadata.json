@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-09T03:51:39.893128536Z",
+  "generated_at": "2026-08-16T03:11:14.866504515Z",
   "list_name": "iran-ips",
   "source_count": 11,
   "prefix_count": 2769,
-  "ipv4_count": 2114,
-  "ipv6_count": 655,
+  "ipv4_count": 2113,
+  "ipv6_count": 656,
   "sources": [
     {
       "name": "Chocolate4U geoip.dat",
       "url": "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/geoip.dat",
-      "prefix_count": 2879
+      "prefix_count": 2907
     },
     {
       "name": "IPDeny aggregated IR",
@@ -24,17 +24,17 @@
     {
       "name": "IPToASN v4 IR",
       "url": "https://iptoasn.com/data/ip2country-v4.tsv.gz",
-      "prefix_count": 5185
+      "prefix_count": 4835
     },
     {
       "name": "IPToASN v6 IR",
       "url": "https://iptoasn.com/data/ip2country-v6.tsv.gz",
-      "prefix_count": 258
+      "prefix_count": 264
     },
     {
       "name": "Loyalsoldier geoip.dat",
       "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat",
-      "prefix_count": 2752
+      "prefix_count": 2769
     },
     {
       "name": "MrT3acher MikroTik address list gist",
