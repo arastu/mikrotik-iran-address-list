@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-20T07:43:12.933347462Z",
+  "generated_at": "2026-09-27T08:05:12.046718833Z",
   "list_name": "iran-ips",
   "source_count": 11,
-  "prefix_count": 2772,
-  "ipv4_count": 2111,
-  "ipv6_count": 661,
+  "prefix_count": 2775,
+  "ipv4_count": 2113,
+  "ipv6_count": 662,
   "sources": [
     {
       "name": "Chocolate4U geoip.dat",
@@ -14,27 +14,27 @@
     {
       "name": "IPDeny aggregated IR",
       "url": "https://www.ipdeny.com/ipblocks/data/aggregated/ir-aggregated.zone",
-      "prefix_count": 1742
+      "prefix_count": 1744
     },
     {
       "name": "IPDeny country IR",
       "url": "https://www.ipdeny.com/ipblocks/data/countries/ir.zone",
-      "prefix_count": 1960
+      "prefix_count": 1966
     },
     {
       "name": "IPToASN v4 IR",
       "url": "https://iptoasn.com/data/ip2country-v4.tsv.gz",
-      "prefix_count": 5327
+      "prefix_count": 4865
     },
     {
       "name": "IPToASN v6 IR",
       "url": "https://iptoasn.com/data/ip2country-v6.tsv.gz",
-      "prefix_count": 450
+      "prefix_count": 469
     },
     {
       "name": "Loyalsoldier geoip.dat",
       "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat",
-      "prefix_count": 2787
+      "prefix_count": 2771
     },
     {
       "name": "MrT3acher MikroTik address list gist",
@@ -44,7 +44,7 @@
     {
       "name": "RIPEstat country resource list IR",
       "url": "https://stat.ripe.net/data/country-resource-list/data.json?resource=IR\u0026v4_format=prefix",
-      "prefix_count": 2532
+      "prefix_count": 2538
     },
     {
       "name": "Ramtiiin iran-ip",
@@ -54,7 +54,7 @@
     {
       "name": "plitw ros-country-ips v4 (RIPE delegated)",
       "url": "https://plitw.github.io/ros-country-ips/routeros_lists/ir_ipv4.rsc",
-      "prefix_count": 1957
+      "prefix_count": 1963
     },
     {
       "name": "plitw ros-country-ips v6 (RIPE delegated)",
