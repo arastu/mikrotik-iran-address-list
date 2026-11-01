@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-25T07:33:12.215677379Z",
+  "generated_at": "2026-11-01T09:11:22.393652069Z",
   "list_name": "iran-ips",
   "source_count": 11,
-  "prefix_count": 2772,
-  "ipv4_count": 2105,
-  "ipv6_count": 667,
+  "prefix_count": 2776,
+  "ipv4_count": 2106,
+  "ipv6_count": 670,
   "sources": [
     {
       "name": "Chocolate4U geoip.dat",
@@ -24,12 +24,12 @@
     {
       "name": "IPToASN v4 IR",
       "url": "https://iptoasn.com/data/ip2country-v4.tsv.gz",
-      "prefix_count": 4862
+      "prefix_count": 4909
     },
     {
       "name": "IPToASN v6 IR",
       "url": "https://iptoasn.com/data/ip2country-v6.tsv.gz",
-      "prefix_count": 527
+      "prefix_count": 531
     },
     {
       "name": "Loyalsoldier geoip.dat",
@@ -44,7 +44,7 @@
     {
       "name": "RIPEstat country resource list IR",
       "url": "https://stat.ripe.net/data/country-resource-list/data.json?resource=IR\u0026v4_format=prefix",
-      "prefix_count": 2547
+      "prefix_count": 2550
     },
     {
       "name": "Ramtiiin iran-ip",
@@ -59,7 +59,7 @@
     {
       "name": "plitw ros-country-ips v6 (RIPE delegated)",
       "url": "https://plitw.github.io/ros-country-ips/routeros_lists/ir_ipv6.rsc",
-      "prefix_count": 575
+      "prefix_count": 578
     }
   ]
 }
