@@ -1,16 +1,11 @@
 {
-  "generated_at": "2026-11-01T09:11:22.393652069Z",
+  "generated_at": "2026-11-08T08:57:05.063257184Z",
   "list_name": "iran-ips",
-  "source_count": 11,
-  "prefix_count": 2776,
-  "ipv4_count": 2106,
-  "ipv6_count": 670,
+  "source_count": 8,
+  "prefix_count": 2562,
+  "ipv4_count": 1979,
+  "ipv6_count": 583,
   "sources": [
-    {
-      "name": "Chocolate4U geoip.dat",
-      "url": "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/geoip.dat",
-      "prefix_count": 2811
-    },
     {
       "name": "IPDeny aggregated IR",
       "url": "https://www.ipdeny.com/ipblocks/data/aggregated/ir-aggregated.zone",
@@ -24,27 +19,17 @@
     {
       "name": "IPToASN v4 IR",
       "url": "https://iptoasn.com/data/ip2country-v4.tsv.gz",
-      "prefix_count": 4909
+      "prefix_count": 4922
     },
     {
       "name": "IPToASN v6 IR",
       "url": "https://iptoasn.com/data/ip2country-v6.tsv.gz",
-      "prefix_count": 531
-    },
-    {
-      "name": "Loyalsoldier geoip.dat",
-      "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat",
-      "prefix_count": 2782
+      "prefix_count": 456
     },
     {
       "name": "MrT3acher MikroTik address list gist",
       "url": "https://gist.githubusercontent.com/MrT3acher/e963287d408cb17fbb0b2342155acaf7/raw/add-iran-address-list.rsc",
       "prefix_count": 1525
-    },
-    {
-      "name": "RIPEstat country resource list IR",
-      "url": "https://stat.ripe.net/data/country-resource-list/data.json?resource=IR\u0026v4_format=prefix",
-      "prefix_count": 2550
     },
     {
       "name": "Ramtiiin iran-ip",
@@ -61,5 +46,10 @@
       "url": "https://plitw.github.io/ros-country-ips/routeros_lists/ir_ipv6.rsc",
       "prefix_count": 578
     }
+  ],
+  "failed_sources": [
+    "Chocolate4U geoip.dat: Chocolate4U geoip.dat fetch failed: unexpected status 504 Gateway Timeout",
+    "Loyalsoldier geoip.dat: Loyalsoldier geoip.dat fetch failed: unexpected status 504 Gateway Timeout",
+    "RIPEstat country resource list IR: RIPEstat country resource list IR fetch failed: unexpected status 500 Internal Server Error"
   ]
 }
